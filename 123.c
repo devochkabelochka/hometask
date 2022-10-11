@@ -1,88 +1,117 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include "stdafx.h" //<stdio.h>
 
-int g_level = 0;
+int array[20];
 
-void shannon (int start, int end, int arr[20], char code[20][20], int level) {
-    int i = start;
-    int j = end;
-    int isum = arr[i], jsum = arr[j];
 
-    if (level > g_level) {
-        g_level = level;
-    }
-    while (i < (j - 1)) {
-        while (isum > jsum && i < (j - 1)) {
-            j--;
-            jsum += arr[j];
-        }
-        while (isum < jsum && i < (j - 1)) {
-            i++;
-            isum += arr[i]; 
-        }
-    }
+struct my
+{
+	char ch;
+	int kol;
+	float chast;
+};
 
-    if (i == start) {
-        code[start][level] = '0';
-    }
-    else if ((i - start) >= 1) {
-        for (int k = start; k <= i; ++k)
-            code[k][level] = '0';
 
-        shannon(start, i, arr, code, level + 1);
-    }
+void fano(my*P , int first, int last )
+{
+	// когда выйтти
+	// где середина  nser
 
-    if (j == end) {
-        code[end][level] = '1';
-    }
-    else if ((end - j) >= 1) {
-        for (int k = j; k <= end; ++k)
-            code[k][level] = '1';
-
-        shannon(j, end, arr, code, level + 1);
-    }
+	for (int i = first; i < nser; i++)
+	{
+		//add '0'
+	}
+	for (int i = nser; i <= last; i++)
+	{
+		//add '1'
+	}
+	fano(P, first, nser - 1);
+	fano(P, nser, last);
 }
+
+int bubble(int arr[20], int )
+{
+	return 0;
+}
+
+
+
+
+int vs[256] = { 0 };
+int N;
+char str[20] = "baraban";
+
 
 int main()
 {
-    int arr[20];
-    int n, i, j;
-    printf("Enter the number of symbols: ");
-    scanf("%d ", &n);
-    
+	int i = 0;
 
-    for (i = 0; i < n; ++i) {
-        int s;
-        printf("Enter symbol frequency: ");
-        scanf("%d ", &s);
-        j = i;
-        while (j && arr[j - 1] < s) {
-            arr[j] = arr[j - 1];
-            j--;
-        }
-        arr[j] = s;
-    }
+	while (str[i] != 0)
+	{
+		vs[str[i]]++;
+		i++;
+	}
 
-    char code[20][20];
+	for (int i = 0; i < 256; i++)
+		if (vs[i] != 0)
+		{
+			N++;
+		}																													
 
-    for (i = 0; i < n; ++i) {
-        for (j = 0; j < n; j++) {
-            code[i][j] = 'X';
-        }
-    }
+	my * new_struct = new my[N];
 
-    shannon(0, n - 1, arr, code, 0);
+	int j = 0;
 
-    printf("\n\n DATA CODE");
-    for (i = 0; i < n; ++i) {
-        printf("\n%4d: ", arr[i]);
-        for (j = 0; j <= g_level; j++) {
-            if (code[i][j] != 'X')
-                printf("%c", code[i][j]);
-        }
-    }
-    printf("\n");
+	float i_new = i;
 
-    return 0;
+	for (int i = 0; i < 256; i++)
+
+		if (vs[i] != 0)
+		{
+			new_struct[j].ch = i;
+			new_struct[j].kol = vs[i]; 
+			new_struct[j].chast = vs[i] / i_new;
+			j++;
+		}
+
+	for (int i = 0; i < N; i++)
+	{
+		printf("%c  %d  %f\n", new_struct[i].ch, new_struct[i].kol, new_struct[i].chast);
+	}
+
+	return 0;
 }
 
+
+
+/*
+void arr_sort(int* ptr, int arrLen)
+{
+	int i, j;
+	for (i = 0; i < arrLen - 1; i++)
+	{
+		for (j = 0; j < arrLen - i - 1; j++)
+		{
+			if (ptr[j] > ptr[j + 1])
+			{
+				int temp = ptr[j];
+				ptr[j] = ptr[j + 1];
+				ptr[j + 1] = temp;
+			}
+		}
+	}
+	for (i = 0; i < arrLen; i++)
+	{
+		printf("%d ", ptr[i]);
+	}
+	printf("\n");
+}
+
+
+void main()
+{
+	int arr[] = { 1231241, 1232, 33, 5, 213, 532 };
+	int len = sizeof(arr)/sizeof(len);
+
+	arr_sort(arr, len);
+}
+*/
