@@ -8,14 +8,23 @@ struct my
 	char ch;
 	int kol;
 	float chast;
+	char code[20];
 };
 
 
-void fano(my*P , int first, int last )
+void fano (struct my*P , int first, int last )
 {
-	// когда выйтти
-	// где середина  nser
-
+	// когда выйти
+	// где середина по частоте nser
+	
+	int i = 0;
+	float nser;
+	while (nser < 0.5)
+	{
+		nser += p[i].chast;
+		i++;
+	}
+	
 	for (int i = first; i < nser; i++)
 	{
 		//add '0'
