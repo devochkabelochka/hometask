@@ -136,35 +136,3 @@ int main()
 	}
 	return 0;
 }
-/*
-void arr_sort(int* ptr, int arrLen)
-{
-int i, j;
-for (i = 0; i < arrLen - 1; i++)
-{
-for (j = 0; j < arrLen - i - 1; j++)
-{
-if (ptr[j] > ptr[j + 1])
-{
-int temp = ptr[j];
-ptr[j] = ptr[j + 1];
-ptr[j + 1] = temp;
-}
-}
-}
-for (i = 0; i < arrLen; i++)
-{
-printf("%d ", ptr[i]);
-}
-printf("\n");
-}
-
-
-void main()
-{
-int arr[] = { 1231241, 1232, 33, 5, 213, 532 };
-int len = sizeof(arr)/sizeof(len);
-
-arr_sort(arr, len);
-}
-*/
