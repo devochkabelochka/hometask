@@ -19,6 +19,22 @@ void AddChar(char *x, char y)
 	x[i] = '\0';
 }
 
+void connection(char *str, char *stp)
+{
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        i ++;
+    }
+    int j = 0;
+    while (stp[j] != '\0')
+    {
+        str[i + j] = stp[j];
+        j ++;
+    }
+    str[i + j] = '\0';
+}
+
 void fano(my*P, int first, int last)
 {
 	if (first == last) return;
@@ -134,5 +150,36 @@ int main()
 	{
 		printf("%c  %s\n", (new_struct + i)->ch, (new_struct + i)->code);
 	}
+	    for (int i = 0; i < N; i++)
+	{
+	printf("%c %s\n", (new_struct + i)->ch, (new_struct + i)->code);
+	}
+	printf("\n");
+
+	char code_exit[50];
+
+	for (int i = 0; i < sizeof(str); i ++) {
+	for (int j = 0; j < N; j ++) {
+	    if ((new_struct + j) ->ch == str[i])
+	    {
+		connection(code_exit, (new_struct + j) ->code);
+	    }
+	}
+	}
+
+	printf("%s\n", code_exit);
+	printf("\n");
+
+	char code_final_exit[10];
+
+	for (int i = 0; i < sizeof(code_exit); i ++) {
+	if (code_exit[i] == '1' || code_exit[i] == '0') {
+	    if (i != 0 && i % 8 == 0) {
+		AddChar(code_final_exit, ' ');
+	    }
+	    AddChar(code_final_exit, code_exit[i]);
+	}
+	}
+	printf("%s\n", code_final_exit);
 	return 0;
 }
